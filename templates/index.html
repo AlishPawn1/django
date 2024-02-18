@@ -1,0 +1,40 @@
+{% extends "layout/base.html" %}
+{% block title %}
+home
+{% endblock title %}
+
+{% block content %}
+    {% if show %}
+    <div class="container pt-5">
+        
+        <h1>student information</h1>
+        <div class="text-center">
+            <h2>topper</h2>
+            <p>the topper of this batch is 
+                {{ information | first}} with rank
+                {{information | first}}
+            </p>
+        </div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Grade</th>
+            </thead>
+            <tbody>
+                {% for info in information %}
+                <tr>
+                    <td>{{ info.name |add:" pawn"}}</td>
+                    <td>{{ info.rank |add:"2" }}</td>
+                    <td>{{ info.grade |floatformat:"0" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {{ list|add:information }}
+    </div>
+    {% else %}
+    <div>No information</div>
+    {% endif %}
+
+    {% endblock content %}

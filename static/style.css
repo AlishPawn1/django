@@ -1,0 +1,21 @@
+*{
+    /* font-size: 10px; */
+}
+
+a{
+    text-decoration: none;
+}
+h1{
+    font-size: 3rem;
+    color: red;
+}
+tr{
+    color: aqua;
+}
+img{
+    max-width: 100%;
+    object-fit: cover;
+}
+.card .content{
+    padding: 20px;
+}
