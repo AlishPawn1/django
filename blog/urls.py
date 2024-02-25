@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.views import LogoutView
+from accounts.views import login_view, register_view
+
 from home.views import home_view, calculation_view
 from post.views import post_list_view, post_create_view, post_detail_view, post_edit_view, post_delete_view
  
@@ -25,6 +28,9 @@ from post.views import post_list_view, post_create_view, post_detail_view, post_
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/login/', login_view, name = "login" ),
+    path('accounts/register/', register_view, name = "register" ),
+    path('accounts/logout/', LogoutView.as_view(), name = "logout" ),
     path('', home_view, name="home"),
     path('calculation/', calculation_view, name="calculation"),
     path('post/list/', post_list_view, name= "post-list"),
