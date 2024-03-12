@@ -20,11 +20,12 @@ def login_view(request):
             )
             if user:
                 login(request, user)
-                return redirect('post-list')
+                # return redirect('post-list')
+                return redirect('home')
             return render(request, "accounts/login.html", {"form": form, "message": "user not found"})
         return render(request, "accounts/login.html", {"form": form})
                 
-
+from profiles.models import UserProfile
 def register_view(request):
     if request.method == "GET":
         form = UserCreationForm()
@@ -32,7 +33,8 @@ def register_view(request):
     else:
         form = UserCreationForm(data = request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            UserProfile.objects.create(user= user)
             return redirect('login')
         else:
             return render(request, "accounts/register.html", {"form": form})

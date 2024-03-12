@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "home",
     "post",
     "accounts",
+    "profiles",
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,12 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 LOGIN_URL = "/accounts/login/"
+
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "alishpawn00@gmail.com"
+EMAIL_HOST_PASSWORD = "lupfmoliqmhqwumu"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = "Python Blog Web App <alishpawn00@gmail.com>"

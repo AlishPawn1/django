@@ -1,0 +1,24 @@
+{% extends "layout/base.html" %}
+{% block title %}
+Contact Page
+{% endblock title %}
+
+{% block content %}
+
+<section>
+    <div class="container">
+        <h1 class="text-center text-info">contact us {{message}}</h1>
+        <p class="text-light">Please input the value for contacting us. we will promptly reply your queries</p>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form action="" method="post" class="form">
+                    {% csrf_token %}
+                    {{form}}
+                    <input type="submit" value="send" class="btn btn-md btn-success float-end">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

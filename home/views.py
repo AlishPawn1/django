@@ -27,3 +27,26 @@ def calculation_view(request):
       print("form datas: ", request.POST)
       result = int(request.POST.get('num1')) + int(request.POST.get('num2'))
       return render(request, "calc.html", context={"result": result})
+
+from home.forms import ContactForm
+from django.core.mail import send_mail
+from django.conf import settings
+
+
+def contact_view(request):
+  if request.method == 'GET':
+    form = ContactForm()
+    return render(request, "contact.html", {"form": form})
+  else:
+    form = ContactForm(data = request.POST)
+    if form.is_valid():
+      send_mail(
+        from_email = settings.DEFAULT_FROM_EMAIL,
+        subject="Contact Email from Application",
+        message= form.cleaned_data.get('message'),
+        recipient_list=[form.cleaned_data.get('email')],
+        fail_silently=False
+      )
+      return render(request, "contact.html", {'form': form, 'message': 'sent'})
+    return render(request, "contact.html", {'form': form})
+    

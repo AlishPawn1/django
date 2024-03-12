@@ -1,14 +1,17 @@
 {% extends "layout/base.html" %}
 {% block title %}
-error page
+404 Not Found
 {% endblock title %}
 
 {% block content %}
 
-<section class="">
+<section class="error-section d-flex justify-content-center align-items-center" style="height: 75vh;">
     <div class="container">
-        <h1 class="heading">404 error</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <div class="content text-center">
+            <h1 class="text-danger heading"> Error!!! 404 not Found </h1>
+            <p class="text-danger" >Page not found</p>
+            <a href="{% url 'home' %}" class="btn btn-primary">home</a>
+        </div>
     </div>
 </section>
 
